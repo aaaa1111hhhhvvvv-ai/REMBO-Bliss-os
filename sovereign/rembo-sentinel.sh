@@ -13,7 +13,7 @@ HEALTH_LOG="$SENTINEL_DIR/health.log"
 STATE_FILE="$SENTINEL_DIR/state.json"
 LOGFILE="$SENTINEL_DIR/sentinel.log"
 GITHUB_REPO="aaaa1111hhhhvvvv-ai"
-GITHUB_RAW="https://raw.githubusercontent.com/$GITHUB_REPO/main"
+GITHUB_RAW="https://raw.githubusercontent.com/$GITHUB_REPO/REMBO-Bliss-os/sovereign-edition-v1"
 UPDATE_MANIFEST="$SENTINEL_DIR/manifest.json"
 
 # Initialize directories
