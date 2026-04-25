@@ -443,6 +443,8 @@ REMBO-Bliss-os/
 │   ├── FINAL_CERTIFICATION_REPORT.md            # Standard forensic audit
 │   ├── MICROSCOPIC_CERTIFICATION_REPORT.md      # Byte-level audit
 │   └── UNIVERSAL_CERTIFICATION_REPORT.md        # Universal Edition audit
+├── tools/
+│   └── rembo_vm_sovereign.py                    # QEMU VM Emulator (GUI)
 └── docs/
     ├── BIOS_SETUP.md                            # BIOS configuration guide
     ├── SOVEREIGN_STACK.md                       # Feature documentation
