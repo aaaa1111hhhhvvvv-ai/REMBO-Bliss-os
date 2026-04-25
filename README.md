@@ -305,12 +305,62 @@ A GUI popup appears weekly showing:
 
 ## Quick Start
 
-### Flash the Pure Master ISO
+### Step 1: Download
 
-1. Download the latest ISO from [Releases](../../releases)
-2. Write to USB: `dd if=REMBO-Bliss-os.iso of=/dev/sdX bs=4M status=progress`
-3. Boot from USB and select **"REMBO-Bliss-os Sovereign Edition"**
-4. The system auto-applies all Sovereign Stack features at boot
+| Edition | Link |
+|---------|------|
+| **Sovereign** (i5-12400F + RTX 4060 Ti) | [Download ISO](https://gofile.io/d/NqZ7Gq) |
+| **Universal** (Any modern CPU + NVIDIA) | [Download ISO](https://gofile.io/d/CDMbAU) |
+
+### Step 2: Download Rufus
+
+Download **Rufus** (free, open-source USB flasher for Windows):
+
+**https://rufus.ie/en/**
+
+> Direct download: [Rufus 4.6 (Latest)](https://github.com/pbatard/rufus/releases/download/v4.6/rufus-4.6.exe) — Portable, no installation needed.
+
+### Step 3: Flash ISO to USB with Rufus
+
+> **Requirements:** USB flash drive **8 GB minimum** (16 GB recommended). All data on the USB will be erased.
+
+Open Rufus and configure **exactly** as follows:
+
+| Setting | Value |
+|---------|-------|
+| **Device** | Select your USB flash drive |
+| **Boot selection** | Click **SELECT** → choose the downloaded `.iso` file |
+| **Partition scheme** | **GPT** |
+| **Target system** | **UEFI (non CSM)** |
+| **File system** | **FAT32** (Large) |
+| **Cluster size** | **Default** |
+
+> **Important:** When Rufus asks how to write the image, select **"Write in DD Image mode"** (NOT ISO Image mode). This ensures the hybrid boot structure (UEFI + Legacy) is preserved correctly.
+
+Click **START** and wait for the process to complete (approximately 5-10 minutes).
+
+### Step 4: BIOS Setup
+
+1. Restart your PC and enter BIOS (press **DEL** or **F2** during startup)
+2. Set these settings:
+
+| BIOS Setting | Value |
+|-------------|-------|
+| **Boot Mode** | **UEFI** |
+| **Secure Boot** | **Disabled** |
+| **Fast Boot** | **Disabled** (recommended) |
+| **Boot Priority** | Set USB drive as **#1** |
+
+3. Save and exit (usually **F10**)
+
+### Step 5: Boot and Install
+
+1. PC boots from USB → GRUB menu appears
+2. Select **"REMBO-Bliss-os Sovereign Edition"**
+3. Choose installation option:
+   - **Run from USB** — Test without installing (live mode)
+   - **Install to hard drive** — Permanent installation
+4. The Sovereign Stack activates automatically at boot (8000Hz, BBR, Governor, KVM Masking)
 
 ### Apply a Driver Package
 
