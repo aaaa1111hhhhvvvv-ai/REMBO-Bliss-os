@@ -1,0 +1,86 @@
+{
+  "nvidia_gpu_profiles": [
+    {
+      "generation": "Fermi",
+      "codename": "GF100-GF119",
+      "vulkan_driver": "nouveau_legacy",
+      "gsp_support": false,
+      "firmware_path": null,
+      "nvk_compatible": false,
+      "cards": ["GTX 460", "GTX 470", "GTX 480", "GTX 560", "GTX 570", "GTX 580", "GTX 590"]
+    },
+    {
+      "generation": "Kepler",
+      "codename": "GK104-GK210",
+      "vulkan_driver": "nouveau_legacy",
+      "gsp_support": false,
+      "firmware_path": null,
+      "nvk_compatible": false,
+      "cards": ["GTX 650", "GTX 660", "GTX 670", "GTX 680", "GTX 690", "GTX 750", "GTX 760", "GTX 770", "GTX 780", "GTX Titan"]
+    },
+    {
+      "generation": "Maxwell",
+      "codename": "GM107-GM206",
+      "vulkan_driver": "nouveau",
+      "gsp_support": false,
+      "firmware_path": null,
+      "nvk_compatible": true,
+      "cards": ["GTX 750 Ti", "GTX 950", "GTX 960", "GTX 970", "GTX 980", "GTX 980 Ti"]
+    },
+    {
+      "generation": "Pascal",
+      "codename": "GP102-GP108",
+      "vulkan_driver": "nouveau",
+      "gsp_support": false,
+      "firmware_path": null,
+      "nvk_compatible": true,
+      "cards": ["GTX 1050", "GTX 1060", "GTX 1070", "GTX 1080", "GTX 1080 Ti", "Titan X"]
+    },
+    {
+      "generation": "Volta",
+      "codename": "GV100",
+      "vulkan_driver": "nouveau",
+      "gsp_support": false,
+      "firmware_path": null,
+      "nvk_compatible": true,
+      "cards": ["Titan V", "Quadro GV100"]
+    },
+    {
+      "generation": "Turing",
+      "codename": "TU102-TU117",
+      "vulkan_driver": "nouveau_nvk",
+      "gsp_support": true,
+      "firmware_path": "nvidia/tu1XX/gsp",
+      "nvk_compatible": true,
+      "cards": ["GTX 1650", "GTX 1660", "RTX 2060", "RTX 2070", "RTX 2080", "RTX 2080 Ti", "Titan RTX"]
+    },
+    {
+      "generation": "Ampere",
+      "codename": "GA102-GA107",
+      "vulkan_driver": "nouveau_nvk",
+      "gsp_support": true,
+      "firmware_path": "nvidia/ga1XX/gsp",
+      "nvk_compatible": true,
+      "cards": ["RTX 3050", "RTX 3060", "RTX 3060 Ti", "RTX 3070", "RTX 3070 Ti", "RTX 3080", "RTX 3080 Ti", "RTX 3090", "RTX 3090 Ti"]
+    },
+    {
+      "generation": "Ada Lovelace",
+      "codename": "AD102-AD107",
+      "vulkan_driver": "nouveau_nvk",
+      "gsp_support": true,
+      "firmware_path": "nvidia/ad1XX/gsp",
+      "nvk_compatible": true,
+      "certified_chip": "AD106 (RTX 4060 Ti)",
+      "cards": ["RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 4070 Ti", "RTX 4070 Ti Super", "RTX 4080", "RTX 4080 Super", "RTX 4090"]
+    },
+    {
+      "generation": "Blackwell",
+      "codename": "GB202-GB207",
+      "vulkan_driver": "nouveau_nvk",
+      "gsp_support": true,
+      "firmware_path": "nvidia/gb2XX/gsp",
+      "nvk_compatible": true,
+      "cards": ["RTX 5060", "RTX 5070", "RTX 5070 Ti", "RTX 5080", "RTX 5090"]
+    }
+  ]
+}

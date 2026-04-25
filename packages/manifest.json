@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "architect": "FERAS-AL-ABBADI",
+  "packages": [
+    {
+      "name": "rembo-nvk-alderlake",
+      "description": "Mesa NVK for Intel 12th Gen (Pure Master)",
+      "cpu": "alderlake",
+      "march": "-march=alderlake",
+      "status": "certified",
+      "score": "100/100"
+    }
+  ],
+  "last_updated": "2025-04-25T00:00:00Z"
+}

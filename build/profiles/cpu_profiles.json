@@ -1,0 +1,201 @@
+{
+  "cpu_profiles": [
+    {
+      "name": "core2",
+      "march": "core2",
+      "vendor": "Intel",
+      "generations": "Core 2 Duo / Core 2 Quad",
+      "years": "2006-2008",
+      "features": ["SSE3", "SSSE3"],
+      "avx2": false
+    },
+    {
+      "name": "nehalem",
+      "march": "nehalem",
+      "vendor": "Intel",
+      "generations": "1st Gen Core i (Nehalem/Westmere)",
+      "years": "2008-2010",
+      "features": ["SSE4.1", "SSE4.2"],
+      "avx2": false
+    },
+    {
+      "name": "sandybridge",
+      "march": "sandybridge",
+      "vendor": "Intel",
+      "generations": "2nd Gen Core (Sandy Bridge)",
+      "years": "2011",
+      "features": ["AVX"],
+      "avx2": false
+    },
+    {
+      "name": "ivybridge",
+      "march": "ivybridge",
+      "vendor": "Intel",
+      "generations": "3rd Gen Core (Ivy Bridge)",
+      "years": "2012",
+      "features": ["AVX"],
+      "avx2": false
+    },
+    {
+      "name": "haswell",
+      "march": "haswell",
+      "vendor": "Intel",
+      "generations": "4th Gen Core (Haswell / Devil's Canyon)",
+      "years": "2013-2014",
+      "features": ["AVX2", "FMA3", "BMI1", "BMI2"],
+      "avx2": true
+    },
+    {
+      "name": "broadwell",
+      "march": "broadwell",
+      "vendor": "Intel",
+      "generations": "5th Gen Core (Broadwell)",
+      "years": "2015",
+      "features": ["AVX2", "FMA3", "ADX", "RDSEED"],
+      "avx2": true
+    },
+    {
+      "name": "skylake",
+      "march": "skylake",
+      "vendor": "Intel",
+      "generations": "6th-7th Gen Core (Skylake / Kaby Lake)",
+      "years": "2015-2017",
+      "features": ["AVX2", "SGX", "MPX"],
+      "avx2": true
+    },
+    {
+      "name": "coffeelake",
+      "march": "skylake",
+      "vendor": "Intel",
+      "generations": "8th-9th Gen Core (Coffee Lake)",
+      "years": "2018-2019",
+      "features": ["AVX2"],
+      "avx2": true,
+      "note": "Uses skylake march (same microarchitecture)"
+    },
+    {
+      "name": "icelake",
+      "march": "icelake-client",
+      "vendor": "Intel",
+      "generations": "10th Gen Core (Ice Lake)",
+      "years": "2019",
+      "features": ["AVX-512", "AVX2", "VNNI"],
+      "avx2": true,
+      "avx512": true
+    },
+    {
+      "name": "tigerlake",
+      "march": "tigerlake",
+      "vendor": "Intel",
+      "generations": "11th Gen Core (Tiger Lake)",
+      "years": "2020",
+      "features": ["AVX-512", "AVX2", "VNNI"],
+      "avx2": true,
+      "avx512": true
+    },
+    {
+      "name": "alderlake",
+      "march": "alderlake",
+      "vendor": "Intel",
+      "generations": "12th Gen Core (Alder Lake)",
+      "years": "2021-2022",
+      "features": ["AVX2", "Hybrid P+E cores"],
+      "avx2": true,
+      "pure_master": true,
+      "certified_cpu": "i5-12400F"
+    },
+    {
+      "name": "raptorlake",
+      "march": "raptorlake",
+      "vendor": "Intel",
+      "generations": "13th-14th Gen Core (Raptor Lake)",
+      "years": "2022-2024",
+      "features": ["AVX2", "Hybrid P+E cores"],
+      "avx2": true
+    },
+    {
+      "name": "arrowlake",
+      "march": "arrowlake",
+      "vendor": "Intel",
+      "generations": "15th Gen Core Ultra (Arrow Lake)",
+      "years": "2024-2025",
+      "features": ["AVX2", "AVX-VNNI"],
+      "avx2": true
+    },
+    {
+      "name": "k8",
+      "march": "k8",
+      "vendor": "AMD",
+      "generations": "Athlon 64 / Phenom / Phenom II",
+      "years": "2003-2012",
+      "features": ["SSE3", "x86-64"],
+      "avx2": false
+    },
+    {
+      "name": "bdver1",
+      "march": "bdver1",
+      "vendor": "AMD",
+      "generations": "Bulldozer / Piledriver (FX Series)",
+      "years": "2011-2014",
+      "features": ["AVX", "FMA4", "XOP"],
+      "avx2": false
+    },
+    {
+      "name": "znver1",
+      "march": "znver1",
+      "vendor": "AMD",
+      "generations": "Zen 1 (Ryzen 1000/2000)",
+      "years": "2017-2018",
+      "features": ["AVX2", "SHA"],
+      "avx2": true
+    },
+    {
+      "name": "znver2",
+      "march": "znver2",
+      "vendor": "AMD",
+      "generations": "Zen 2 (Ryzen 3000)",
+      "years": "2019",
+      "features": ["AVX2", "CLWB"],
+      "avx2": true
+    },
+    {
+      "name": "znver3",
+      "march": "znver3",
+      "vendor": "AMD",
+      "generations": "Zen 3 (Ryzen 5000)",
+      "years": "2020-2021",
+      "features": ["AVX2", "VAES", "VPCLMULQDQ"],
+      "avx2": true
+    },
+    {
+      "name": "znver4",
+      "march": "znver4",
+      "vendor": "AMD",
+      "generations": "Zen 4 (Ryzen 7000)",
+      "years": "2022-2023",
+      "features": ["AVX-512", "AVX2", "VNNI"],
+      "avx2": true,
+      "avx512": true
+    },
+    {
+      "name": "znver5",
+      "march": "znver5",
+      "vendor": "AMD",
+      "generations": "Zen 5 (Ryzen 9000)",
+      "years": "2024-2025",
+      "features": ["AVX-512", "AVX2"],
+      "avx2": true,
+      "avx512": true
+    },
+    {
+      "name": "generic",
+      "march": "x86-64-v3",
+      "vendor": "Universal",
+      "generations": "Any CPU with AVX2 support",
+      "years": "2013+",
+      "features": ["AVX2", "FMA3", "BMI1", "BMI2"],
+      "avx2": true,
+      "note": "Fallback profile for any modern x86-64 CPU"
+    }
+  ]
+}

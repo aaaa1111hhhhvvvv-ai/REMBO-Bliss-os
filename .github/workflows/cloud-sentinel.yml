@@ -1,0 +1,208 @@
+name: REMBO Cloud Sentinel — Auto Driver Builder
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'  # Every Sunday at 3:00 AM UTC
+  workflow_dispatch:
+    inputs:
+      force_rebuild:
+        description: 'Force rebuild all packages'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  MESA_REPO: "https://gitlab.freedesktop.org/mesa/mesa.git"
+  LINUX_FIRMWARE_REPO: "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git"
+
+jobs:
+  check-upstream:
+    name: Monitor Upstream Sources
+    runs-on: ubuntu-22.04
+    outputs:
+      mesa_updated: ${{ steps.check_mesa.outputs.updated }}
+      firmware_updated: ${{ steps.check_firmware.outputs.updated }}
+      mesa_version: ${{ steps.check_mesa.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Mesa version
+        id: check_mesa
+        run: |
+          # Get latest Mesa tag
+          LATEST_MESA=$(git ls-remote --tags ${{ env.MESA_REPO }} | grep -oP 'refs/tags/mesa-\K[0-9.]+$' | sort -V | tail -1)
+          CURRENT_MESA=$(cat .mesa_version 2>/dev/null || echo "0.0.0")
+
+          echo "Latest Mesa: $LATEST_MESA"
+          echo "Current Mesa: $CURRENT_MESA"
+
+          if [ "$LATEST_MESA" != "$CURRENT_MESA" ] || [ "${{ inputs.force_rebuild }}" = "true" ]; then
+            echo "updated=true" >> $GITHUB_OUTPUT
+            echo "version=$LATEST_MESA" >> $GITHUB_OUTPUT
+          else
+            echo "updated=false" >> $GITHUB_OUTPUT
+            echo "version=$CURRENT_MESA" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check Linux Firmware
+        id: check_firmware
+        run: |
+          LATEST_FW=$(git ls-remote ${{ env.LINUX_FIRMWARE_REPO }} HEAD | cut -f1 | head -c 12)
+          CURRENT_FW=$(cat .firmware_version 2>/dev/null || echo "none")
+
+          if [ "$LATEST_FW" != "$CURRENT_FW" ] || [ "${{ inputs.force_rebuild }}" = "true" ]; then
+            echo "updated=true" >> $GITHUB_OUTPUT
+          else
+            echo "updated=false" >> $GITHUB_OUTPUT
+          fi
+
+  build-mesa-nvk:
+    name: Build Mesa NVK (${{ matrix.cpu }})
+    needs: check-upstream
+    if: needs.check-upstream.outputs.mesa_updated == 'true'
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        cpu:
+          - { name: "alderlake",   march: "alderlake",      desc: "Intel 12th Gen" }
+          - { name: "haswell",     march: "haswell",        desc: "Intel 4th-7th Gen" }
+          - { name: "skylake",     march: "skylake",        desc: "Intel 6th-10th Gen" }
+          - { name: "znver3",      march: "znver3",         desc: "AMD Zen 3 (Ryzen 5000)" }
+          - { name: "znver4",      march: "znver4",         desc: "AMD Zen 4 (Ryzen 7000)" }
+          - { name: "generic",     march: "x86-64-v3",      desc: "Generic AVX2" }
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git meson ninja-build pkg-config python3-mako \
+            libdrm-dev libvulkan-dev llvm-15-dev libclang-15-dev clang-15 \
+            rustc cargo glslang-tools libwayland-dev libxcb1-dev \
+            libx11-xcb-dev libxcb-dri3-dev libxcb-present-dev \
+            libxcb-xfixes0-dev libxcb-sync-dev libxcb-randr0-dev \
+            libxcb-shm0-dev libxshmfence-dev libxcb-keysyms1-dev \
+            libexpat1-dev libzstd-dev libudev-dev \
+            bindgen cbindgen spirv-tools
+
+      - name: Clone Mesa
+        run: |
+          git clone --depth 1 ${{ env.MESA_REPO }} mesa
+          cd mesa && echo "Mesa version: $(cat VERSION)"
+
+      - name: Configure Mesa NVK
+        run: |
+          cd mesa
+          meson setup build \
+            -Dplatforms=x11,wayland \
+            -Dvulkan-drivers=nouveau \
+            -Dgallium-drivers=nouveau \
+            -Dbuildtype=release \
+            -Db_ndebug=true \
+            -Dc_args="-O2 -march=${{ matrix.cpu.march }}" \
+            -Dcpp_args="-O2 -march=${{ matrix.cpu.march }}" \
+            --prefix=/usr/local
+
+      - name: Build Mesa NVK
+        run: ninja -C mesa/build -j$(nproc)
+
+      - name: Package driver
+        run: |
+          PKG_NAME="rembo-nvk-${{ matrix.cpu.name }}"
+          mkdir -p "pkg/${PKG_NAME}/system/lib64/hw"
+          mkdir -p "pkg/${PKG_NAME}/system/lib64/dri"
+          mkdir -p "pkg/${PKG_NAME}/META-INF"
+
+          cp mesa/build/src/nouveau/vulkan/libvulkan_nouveau.so "pkg/${PKG_NAME}/system/lib64/hw/vulkan.nouveau.so"
+          cp mesa/build/src/gallium/targets/dri/libgallium_dri.so "pkg/${PKG_NAME}/system/lib64/dri/nouveau_dri.so" 2>/dev/null || true
+
+          cat > "pkg/${PKG_NAME}/META-INF/package.json" << EOF
+          {
+            "name": "${PKG_NAME}",
+            "cpu": "${{ matrix.cpu.name }}",
+            "march": "${{ matrix.cpu.march }}",
+            "description": "${{ matrix.cpu.desc }}",
+            "mesa_version": "${{ needs.check-upstream.outputs.mesa_version }}",
+            "build_date": "$(date -Iseconds)",
+            "architect": "FERAS-AL-ABBADI"
+          }
+          EOF
+
+          cd pkg && zip -r "../${PKG_NAME}.zip" "${PKG_NAME}/"
+          sha256sum "../${PKG_NAME}.zip" > "../${PKG_NAME}.sha256"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ format('rembo-nvk-{0}', matrix.cpu.name) }}
+          path: |
+            rembo-nvk-${{ matrix.cpu.name }}.zip
+            rembo-nvk-${{ matrix.cpu.name }}.sha256
+
+  publish-release:
+    name: Publish Performance Packs
+    needs: [check-upstream, build-mesa-nvk]
+    runs-on: ubuntu-22.04
+    if: needs.check-upstream.outputs.mesa_updated == 'true'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Generate manifest
+        run: |
+          echo '{"packages":[' > manifest.json
+          FIRST=true
+          for zip in artifacts/**/*.zip; do
+            [ -f "$zip" ] || continue
+            NAME=$(basename "$zip" .zip)
+            HASH=$(sha256sum "$zip" | awk '{print $1}')
+            SIZE=$(stat -c %s "$zip")
+            [ "$FIRST" = true ] && FIRST=false || echo ',' >> manifest.json
+            echo "{\"name\":\"$NAME\",\"sha256\":\"$HASH\",\"size\":$SIZE}" >> manifest.json
+          done
+          echo ']}' >> manifest.json
+
+      - name: Update version tracker
+        run: |
+          echo "${{ needs.check-upstream.outputs.mesa_version }}" > .mesa_version
+          git config user.name "REMBO Cloud Sentinel"
+          git config user.email "abonanaalabbado@gmail.com"
+          git add .mesa_version manifest.json
+          git commit -m "Update Mesa to ${{ needs.check-upstream.outputs.mesa_version }}" || true
+          git push || true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "mesa-${{ needs.check-upstream.outputs.mesa_version }}"
+          name: "REMBO Performance Pack — Mesa ${{ needs.check-upstream.outputs.mesa_version }}"
+          body: |
+            ## REMBO-Bliss-os Performance Pack
+            **Lead Architect:** FERAS-AL-ABBADI
+
+            ### Driver Packages (Mesa ${{ needs.check-upstream.outputs.mesa_version }})
+            - `rembo-nvk-alderlake` — Intel 12th Gen (Alder Lake)
+            - `rembo-nvk-haswell` — Intel 4th-7th Gen
+            - `rembo-nvk-skylake` — Intel 6th-10th Gen
+            - `rembo-nvk-znver3` — AMD Zen 3 (Ryzen 5000)
+            - `rembo-nvk-znver4` — AMD Zen 4 (Ryzen 7000)
+            - `rembo-nvk-generic` — Generic AVX2 (any modern CPU)
+
+            ### Installation
+            Place in `/data/rembo-sentinel/overlays/` — the Sentinel daemon will auto-apply via OverlayFS.
+          files: |
+            artifacts/**/*.zip
+            manifest.json

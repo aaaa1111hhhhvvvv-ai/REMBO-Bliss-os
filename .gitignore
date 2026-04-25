@@ -1,0 +1,8 @@
+*.iso
+*.img
+*.efs
+build_*/
+*.o
+*.d
+__pycache__/
+.env
