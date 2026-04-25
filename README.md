@@ -20,6 +20,16 @@
 ![Mesa](https://img.shields.io/badge/Mesa%20NVK-26.2.0-purple.svg)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-green.svg)
 
+---
+
+### Download ISO
+
+| File | Size | MD5 | Link |
+|------|------|-----|------|
+| `REMBO-Bliss-os-Sovereign-Edition.iso` | 2.6 GB | `90963214ef2f461c399ed025fea5ff0b` | [**Download from GoFile**](https://gofile.io/d/3gWXZE) |
+
+**SHA256:** `7590a383b3a3a10c5c2b69ff5cdcf83402c717d8c2dee29214d0fba74e7f64f2`
+
 </div>
 
 ---
