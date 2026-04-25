@@ -26,8 +26,8 @@
 
 | Edition | Target | Size | MD5 | Link |
 |---------|--------|------|-----|------|
-| **Sovereign** (i5-12400F + RTX 4060 Ti) | `-march=alderlake` | 2.6 GB | `738ce1506755db4a80c81b0dc8c90081` | [**Download**](https://gofile.io/d/0I92Tx) |
-| **Universal** (Any modern CPU + NVIDIA GPU) | `-march=x86-64-v3` (AVX2) | 2.6 GB | `d4afec6a73596d8a08c403a0f467bb8f` | [**Download**](https://gofile.io/d/nRJgFP) |
+| **Sovereign** (i5-12400F + RTX 4060 Ti) | `-march=alderlake` | 2.6 GB | `738ce1506755db4a80c81b0dc8c90081` | [**Download**](https://gofile.io/d/NqZ7Gq) |
+| **Universal** (Any modern CPU + NVIDIA GPU) | `-march=x86-64-v3` (AVX2) | 2.6 GB | `d4afec6a73596d8a08c403a0f467bb8f` | [**Download**](https://gofile.io/d/CDMbAU) |
 
 > **Sovereign Edition:** Maximum performance for Intel 12th Gen + RTX 4060 Ti hardware.
 > **Universal Edition:** Compatible with any CPU supporting AVX2 (Intel Haswell+ / AMD Zen+) and any NVIDIA GPU (Turing+).
