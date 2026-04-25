@@ -24,11 +24,13 @@
 
 ### Download ISO
 
-| File | Size | MD5 | Link |
-|------|------|-----|------|
-| `REMBO-Bliss-os-Sovereign-Edition.iso` | 2.6 GB | `90963214ef2f461c399ed025fea5ff0b` | [**Download from GoFile**](https://gofile.io/d/3gWXZE) |
+| Edition | Target | Size | MD5 | Link |
+|---------|--------|------|-----|------|
+| **Sovereign** (i5-12400F + RTX 4060 Ti) | `-march=alderlake` | 2.6 GB | `90963214ef2f461c399ed025fea5ff0b` | [**Download**](https://gofile.io/d/3gWXZE) |
+| **Universal** (Any modern CPU + NVIDIA GPU) | `-march=x86-64-v3` (AVX2) | 2.6 GB | `5dc91a45da65103f4203fd5de9ad34cc` | [**Download**](https://gofile.io/d/Thr0zP) |
 
-**SHA256:** `7590a383b3a3a10c5c2b69ff5cdcf83402c717d8c2dee29214d0fba74e7f64f2`
+> **Sovereign Edition:** Maximum performance for Intel 12th Gen + RTX 4060 Ti hardware.
+> **Universal Edition:** Compatible with any CPU supporting AVX2 (Intel Haswell+ / AMD Zen+) and any NVIDIA GPU (Turing+).
 
 </div>
 
