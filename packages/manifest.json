@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "architect": "FERAS-AL-ABBADI",
   "packages": [
     {
@@ -9,7 +9,15 @@
       "march": "-march=alderlake",
       "status": "certified",
       "score": "100/100"
+    },
+    {
+      "name": "rembo-nvk-generic-avx2",
+      "description": "Mesa NVK for any AVX2 CPU (Universal Edition)",
+      "cpu": "x86-64-v3",
+      "march": "-march=x86-64-v3",
+      "status": "certified",
+      "score": "100/100"
     }
   ],
-  "last_updated": "2025-04-25T00:00:00Z"
+  "last_updated": "2026-04-25T00:00:00Z"
 }

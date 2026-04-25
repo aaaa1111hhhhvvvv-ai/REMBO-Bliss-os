@@ -1,6 +1,27 @@
 # Changelog
 
-## [1.0.0] — 2025-04-25
+## [1.0.1] — 2026-04-25
+
+### Master Fix — 100/100 Perfection Cycle
+
+#### Fixes Applied
+- **FIX #1:** Recompiled Universal kernel + modules with `-march=x86-64-v3` (unique binary, not copied from Sovereign)
+- **FIX #2:** Removed 225 broken ALSA symlinks (ARM/SoC board configs) from both ISOs
+- **FIX #3:** Compiled HealthCheckActivity.java → APK, injected into `system/priv-app/REMBOHealthCheck/`
+- **FIX #4:** Corrected Sentinel `GITHUB_RAW` URL to `sovereign-edition-v1` branch
+
+#### New Files
+- `sovereign/HealthCheckReceiver.java` — BOOT_COMPLETED receiver for Health Check
+- `sovereign/AndroidManifest.xml` — APK build manifest
+- `audit/FINAL_CERTIFICATION_100_100.md` — Master Fix certification (100/100, 0.0% error)
+
+#### ISO Updates
+- **Sovereign Edition:** `REMBO-Bliss-os-Sovereign-Edition-FINAL.iso` (MD5: `738ce1506755db4a80c81b0dc8c90081`)
+- **Universal Edition:** `REMBO-Bliss-os-Universal-Edition-FINAL.iso` (MD5: `d4afec6a73596d8a08c403a0f467bb8f`)
+
+---
+
+## [1.0.0] — 2026-04-25
 
 ### The Sovereign Edition — Initial Release
 

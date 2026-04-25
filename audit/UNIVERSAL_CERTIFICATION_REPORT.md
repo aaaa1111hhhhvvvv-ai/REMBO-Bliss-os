@@ -2,9 +2,9 @@
 
 **Lead Architect:** FERAS-AL-ABBADI
 **Date:** 2026-04-25
-**ISO:** `REMBO-Bliss-os-Universal-Edition.iso`
-**Size:** 2.6 GB (2,743,402,496 bytes)
-**MD5:** `5dc91a45da65103f4203fd5de9ad34cc`
+**ISO:** `REMBO-Bliss-os-Universal-Edition-FINAL.iso`
+**Size:** 2.6 GB (2,746,089,472 bytes)
+**MD5:** `d4afec6a73596d8a08c403a0f467bb8f`
 **Volume ID:** `REMBO_BLISS_UNIVERSAL`
 **Target:** Generic x86-64-v3 (AVX2) — Any modern CPU + NVIDIA GPU
 

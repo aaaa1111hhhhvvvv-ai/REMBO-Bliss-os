@@ -316,7 +316,7 @@ A GUI popup appears weekly showing:
 
 ```bash
 # Download a CPU-specific package
-wget https://github.com/aaaa1111hhhhvvvv-ai/releases/download/v1.0/rembo-nvk-alderlake.zip
+wget https://github.com/aaaa1111hhhhvvvv-ai/REMBO-Bliss-os/releases/download/v1.0/rembo-nvk-alderlake.zip
 
 # Place in Sentinel overlay directory
 adb push rembo-nvk-alderlake.zip /data/rembo-sentinel/overlays/
@@ -331,8 +331,8 @@ adb shell /system/bin/rembo-sentinel update
 
 ```bash
 # Clone the repository
-git clone https://github.com/aaaa1111hhhhvvvv-ai.git
-cd aaaa1111hhhhvvvv-ai
+git clone https://github.com/aaaa1111hhhhvvvv-ai/REMBO-Bliss-os.git
+cd REMBO-Bliss-os
 
 # Build the Pure Master (i5-12400F + RTX 4060 Ti)
 ./build/matrix_builder.sh master
@@ -346,32 +346,37 @@ cd aaaa1111hhhhvvvv-ai
 ## Project Structure
 
 ```
-aaaa1111hhhhvvvv-ai/
-├── README.md                          # This file
-├── LICENSE                            # Apache 2.0
+REMBO-Bliss-os/
+├── README.md                                    # This file
+├── LICENSE                                      # Apache 2.0
+├── .mesa_version                                # Mesa NVK version tracker
 ├── .github/
 │   └── workflows/
-│       └── cloud-sentinel.yml         # Auto-build CI/CD
+│       └── cloud-sentinel.yml                   # Auto-build CI/CD
 ├── build/
-│   ├── matrix_builder.sh              # Universal Matrix builder
+│   ├── matrix_builder.sh                        # Universal Matrix builder
 │   └── profiles/
-│       ├── nvidia_profiles.json       # GPU configurations
-│       └── cpu_profiles.json          # CPU configurations
+│       ├── nvidia_profiles.json                 # GPU configurations
+│       └── cpu_profiles.json                    # CPU configurations
 ├── sovereign/
-│   ├── rembo-sovereign-init.sh        # Boot-time feature stack
-│   ├── rembo-sentinel.sh              # Update daemon
+│   ├── rembo-sovereign-init.sh                  # Boot-time Sovereign Stack
+│   ├── rembo-sentinel.sh                        # Sentinel update daemon
+│   ├── HealthCheckActivity.java                 # Health Check GUI
+│   ├── HealthCheckReceiver.java                 # Boot receiver
+│   ├── AndroidManifest.xml                      # APK manifest
 │   └── configs/
-│       ├── sovereign_build.prop       # Android properties
-│       └── grub_sovereign.cfg         # GRUB configuration
+│       ├── sovereign_build.prop                 # Android properties
+│       └── grub_sovereign.cfg                   # GRUB configuration
 ├── packages/
-│   ├── manifest.json                  # Package registry
-│   └── *.zip                          # Driver packages
+│   └── manifest.json                            # Package registry
 ├── audit/
-│   ├── FORENSIC_AUDIT_REPORT.md       # Standard audit
-│   └── MICROSCOPIC_CERTIFICATION.md   # Byte-level audit
+│   ├── FINAL_CERTIFICATION_100_100.md           # Master Fix certification
+│   ├── FINAL_CERTIFICATION_REPORT.md            # Standard forensic audit
+│   ├── MICROSCOPIC_CERTIFICATION_REPORT.md      # Byte-level audit
+│   └── UNIVERSAL_CERTIFICATION_REPORT.md        # Universal Edition audit
 └── docs/
-    ├── SOVEREIGN_STACK.md             # Feature documentation
-    └── CHANGELOG.md                   # Version history
+    ├── SOVEREIGN_STACK.md                       # Feature documentation
+    └── CHANGELOG.md                             # Version history
 ```
 
 ---
