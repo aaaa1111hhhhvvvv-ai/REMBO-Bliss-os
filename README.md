@@ -305,6 +305,25 @@ A GUI popup appears weekly showing:
 
 ## Quick Start
 
+### Step 0: BIOS Optimization (REQUIRED)
+
+Before flashing or booting REMBO-Bliss-os, you **must** configure your BIOS for optimal hardware compatibility and to unlock the full Sovereign Stack features (180Hz display, 8000Hz input, Re-Size BAR GPU acceleration).
+
+**[Read the Complete BIOS Setup Guide →](docs/BIOS_SETUP.md)**
+
+Quick checklist — verify ALL settings:
+
+```
+[ ] Fast Boot ................. Disabled      [ ] Above 4G Decoding ....... Enabled
+[ ] Secure Boot .............. Disabled      [ ] Re-Size BAR Support ..... Enabled
+[ ] CSM Support .............. Disabled      [ ] Primary Display ......... PCIE
+[ ] XMP / D.O.C.P ........... Enabled       [ ] XHCI Hand-off .......... Enabled
+[ ] Intel VT-x .............. Enabled       [ ] Legacy USB Support ...... Enabled
+[ ] VT-d .................... Enabled
+```
+
+> These settings are **required** for the 100/100 Forensic Score. Incorrect BIOS configuration will degrade GPU performance, disable 8000Hz polling, or prevent boot entirely.
+
 ### Step 1: Download
 
 | Edition | Link |
@@ -425,6 +444,7 @@ REMBO-Bliss-os/
 │   ├── MICROSCOPIC_CERTIFICATION_REPORT.md      # Byte-level audit
 │   └── UNIVERSAL_CERTIFICATION_REPORT.md        # Universal Edition audit
 └── docs/
+    ├── BIOS_SETUP.md                            # BIOS configuration guide
     ├── SOVEREIGN_STACK.md                       # Feature documentation
     └── CHANGELOG.md                             # Version history
 ```
