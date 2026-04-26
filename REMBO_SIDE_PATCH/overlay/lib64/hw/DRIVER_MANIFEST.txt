@@ -1,31 +1,40 @@
 # ============================================================================
-#  Mesa NVK Vulkan Driver Manifest
-#  Target: vulkan.nouveau.so (Mesa NVK 26.2.0-devel)
-#  Optimization: -march=alderlake -O2 (Sovereign) or -march=x86-64-v3 (Universal)
+#  Mesa NVK Vulkan Driver — Build Record
+#  Target: vulkan.nouveau.so (Mesa 24.3.4, NVK)
+#  Optimization: -O3 -march=alderlake -mavx2
 # ============================================================================
 #
-# Place the compiled vulkan.nouveau.so binary in this directory.
+#  STATUS: COMPILED (binary present in this directory)
 #
-# Build command (from Mesa source):
-#   meson setup build \
-#     -Dplatforms=x11,wayland \
-#     -Dvulkan-drivers=nouveau \
-#     -Dgallium-drivers=nouveau \
-#     -Dbuildtype=release \
-#     -Db_ndebug=true \
-#     -Dc_args="-O2 -march=alderlake" \
-#     -Dcpp_args="-O2 -march=alderlake" \
-#     --prefix=/usr/local
-#   ninja -C build
+#  Build Configuration:
+#    Mesa Version:    24.3.4
+#    Build System:    Meson 1.11.1 + Ninja 1.13.0
+#    C Compiler:      GCC 11.4.0
+#    C++ Compiler:    G++ 11.4.0
+#    Rust Compiler:   rustc 1.95.0
+#    Bindgen:         0.72.1
+#    LLVM:            15.0.7
+#    SPIRV-Tools:     2022.2.0
 #
-# Expected Output:
-#   Sovereign: vulkan.nouveau.so (21,268,424 bytes, 18,666 AVX2 instructions)
-#   Universal: vulkan.nouveau.so (21,288,904 bytes, 17,193 AVX2 instructions)
+#  Meson Options:
+#    -Dvulkan-drivers=nouveau
+#    -Dgallium-drivers=nouveau
+#    -Dglx=disabled
+#    -Degl=disabled
+#    -Dplatforms=x11
+#    -Dbuildtype=release
+#    -Db_ndebug=true
+#    -Dc_args="-O3 -march=alderlake -mavx2"
+#    -Dcpp_args="-O3 -march=alderlake -mavx2"
 #
-# Dependencies (21 shared libraries):
-#   libdrm, libzstd, libexpat, libwayland-client, libwayland-server,
-#   libxcb, libX11, libXext, libXfixes, libXrandr, libXrender,
-#   libpthread, libm, libc, libdl, librt, libgcc_s, libstdc++,
-#   libz, libelf, libunwind
+#  Output:
+#    File:    vulkan.nouveau.so
+#    Size:    23,895,696 bytes
+#    AVX2:    25,827 instructions
+#    SHA256:  7956836c93444b07789f06e30351ceb2508a25f7dd658a45d0605df9879e4609
+#
+#  NOTE: This is a Linux-native build. For full Android-x86 ABI compatibility,
+#  rebuild using the AOSP build system or Android NDK cross-compilation
+#  toolchain with -target x86_64-linux-android33.
 #
 # ============================================================================

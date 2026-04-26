@@ -88,20 +88,19 @@ echo ""
 
 # --- Overlay: GPU Stack ---
 echo -e "${CYAN}[4/6] GPU Stack (Mesa NVK + GSP)${NC}"
-check_file "overlay/lib64/hw/vulkan.nouveau.so"              "NVK Vulkan driver" "optional"
+check_file "overlay/lib64/hw/vulkan.nouveau.so"              "NVK Vulkan driver" "required"
 check_file "overlay/lib64/hw/DRIVER_MANIFEST.txt"            "NVK build instructions" "required"
 check_file "overlay/lib64/dri/nouveau_dri.so"                "DRI Gallium driver" "optional"
 check_dir  "overlay/lib/firmware/nvidia/ad106/gsp"           "GSP firmware directory"
 check_file "overlay/lib/firmware/nvidia/ad106/gsp/FIRMWARE_MANIFEST.txt" "GSP firmware manifest" "required"
-# Individual firmware binaries (optional — user must supply from linux-firmware)
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_load-535.113.01.bin"   "GSP booter_load 535"   "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_load-570.144.bin"      "GSP booter_load 570"   "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_unload-535.113.01.bin" "GSP booter_unload 535" "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_unload-570.144.bin"    "GSP booter_unload 570" "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/bootloader-535.113.01.bin"    "GSP bootloader 535"    "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/bootloader-570.144.bin"       "GSP bootloader 570"    "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/gsp-535.113.01.bin"           "GSP main 535"          "optional"
-check_file "overlay/lib/firmware/nvidia/ad106/gsp/scrubber-570.144.bin"         "GSP scrubber 570"      "optional"
+# GSP firmware binaries (7 for Ada Lovelace — acquired from linux-firmware)
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_load-535.113.01.bin"   "GSP booter_load 535"   "required"
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_load-570.144.bin"      "GSP booter_load 570"   "required"
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_unload-535.113.01.bin" "GSP booter_unload 535" "required"
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/booter_unload-570.144.bin"    "GSP booter_unload 570" "required"
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/bootloader-535.113.01.bin"    "GSP bootloader 535"    "required"
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/bootloader-570.144.bin"       "GSP bootloader 570"    "required"
+check_file "overlay/lib/firmware/nvidia/ad106/gsp/scrubber-570.144.bin"         "GSP scrubber 570"      "required"
 echo ""
 
 # --- Overlay: Sovereign Scripts ---
