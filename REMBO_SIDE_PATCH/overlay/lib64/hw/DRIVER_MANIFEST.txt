@@ -1,0 +1,31 @@
+# ============================================================================
+#  Mesa NVK Vulkan Driver Manifest
+#  Target: vulkan.nouveau.so (Mesa NVK 26.2.0-devel)
+#  Optimization: -march=alderlake -O2 (Sovereign) or -march=x86-64-v3 (Universal)
+# ============================================================================
+#
+# Place the compiled vulkan.nouveau.so binary in this directory.
+#
+# Build command (from Mesa source):
+#   meson setup build \
+#     -Dplatforms=x11,wayland \
+#     -Dvulkan-drivers=nouveau \
+#     -Dgallium-drivers=nouveau \
+#     -Dbuildtype=release \
+#     -Db_ndebug=true \
+#     -Dc_args="-O2 -march=alderlake" \
+#     -Dcpp_args="-O2 -march=alderlake" \
+#     --prefix=/usr/local
+#   ninja -C build
+#
+# Expected Output:
+#   Sovereign: vulkan.nouveau.so (21,268,424 bytes, 18,666 AVX2 instructions)
+#   Universal: vulkan.nouveau.so (21,288,904 bytes, 17,193 AVX2 instructions)
+#
+# Dependencies (21 shared libraries):
+#   libdrm, libzstd, libexpat, libwayland-client, libwayland-server,
+#   libxcb, libX11, libXext, libXfixes, libXrandr, libXrender,
+#   libpthread, libm, libc, libdl, librt, libgcc_s, libstdc++,
+#   libz, libelf, libunwind
+#
+# ============================================================================

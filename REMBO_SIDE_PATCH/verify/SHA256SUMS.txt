@@ -1,0 +1,10 @@
+dbe5261466d82559278338c1ac66c75f1dd33fda4ea7bd0e07311639e0c2b7c4  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/README.md
+d8ad2a3331e4272ad0d10b393cd23aa4defa98db7346a3396017451e24d27e0f  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/configs/grub_sovereign.cfg
+6739b24432b961cb287543d8642372ce495b7223ed12e818613e3777c6a79d0d  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/configs/sovereign_build.prop
+b7c1d11a137ebe03f0d6b21e9bb3772afd3c3b450cea2b60dc9d760abe165171  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/bin/rembo-sentinel.sh
+63f02c048b6f29928af83d657cc32ac9025f0fbd17714554c4c9bf65a1bc7fc4  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/bin/rembo-sovereign-init.sh
+6fc907c678139cf8ec721fd9959ed7f0f455158550bf28aded4f3c9b27666873  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/lib/firmware/nvidia/ad106/gsp/FIRMWARE_MANIFEST.txt
+4bd82f488ed73c10e6f967e95053c3c191b81a031e7ccb7b0995a4143d5a7fc9  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/lib64/dri/DRIVER_MANIFEST.txt
+69f39ccbc5c3190a6075a227132675660e66e437f9f81c66e1c59528d07ca1fb  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/lib64/hw/DRIVER_MANIFEST.txt
+8047cefb7e51ec5d9b42ffa807fe8f6c4b9f8d8c1145495210f6d502af140dc7  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/scripts/99-rembo-atomic-patch
+61c6135bb0f7e24c8878ca5a2bbb7e5e1a056b9b88babc85291e68ded7a477b7  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/verify/verify-integrity.sh

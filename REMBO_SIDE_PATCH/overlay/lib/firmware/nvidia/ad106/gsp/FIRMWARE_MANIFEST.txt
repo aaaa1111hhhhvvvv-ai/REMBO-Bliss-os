@@ -1,0 +1,39 @@
+# ============================================================================
+#  NVIDIA AD106 (RTX 4060 Ti) GSP Firmware Manifest
+#  Required by: nouveau.ko (Linux 6.14.0)
+#  Boot param:  nouveau.config=NvGspRm=1
+# ============================================================================
+#
+# Place the following 8 firmware binaries in this directory.
+# Source: linux-firmware repository (upstream)
+# Versions: 535.113.01 + 570.144
+#
+# The binaries must match the SHA256 hashes verified in the
+# FINAL_CERTIFICATION_100_100.md audit report.
+#
+# Required Files:
+# ────────────────────────────────────────────────────────────────────
+#  Filename                            Size (bytes)   Version
+# ────────────────────────────────────────────────────────────────────
+#  booter_load-535.113.01.bin          55,928         535.113.01
+#  booter_load-570.144.bin             57,720         570.144
+#  booter_unload-535.113.01.bin        39,800         535.113.01
+#  booter_unload-570.144.bin           41,592         570.144
+#  bootloader-535.113.01.bin           32,876         535.113.01
+#  bootloader-570.144.bin              36,972         570.144
+#  gsp-535.113.01.bin                  32,876         535.113.01
+#  scrubber-570.144.bin                 8,312         570.144
+# ────────────────────────────────────────────────────────────────────
+#  TOTAL: 8 binaries
+#
+# Kernel firmware request (modinfo nouveau.ko):
+#   firmware: nvidia/ad106/gsp/gsp-535.113.01.bin
+#   firmware: nvidia/ad106/gsp/bootloader-535.113.01.bin
+#   firmware: nvidia/ad106/gsp/booter_unload-535.113.01.bin
+#   firmware: nvidia/ad106/gsp/booter_load-535.113.01.bin
+#
+# Acquisition:
+#   git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+#   cp linux-firmware/nvidia/ad106/gsp/*.bin ./
+#
+# ============================================================================

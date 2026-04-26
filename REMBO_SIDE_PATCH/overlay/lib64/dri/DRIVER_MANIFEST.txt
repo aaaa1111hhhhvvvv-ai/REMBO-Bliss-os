@@ -1,0 +1,11 @@
+# ============================================================================
+#  Mesa Gallium DRI Driver Manifest
+#  Target: nouveau_dri.so
+#  Built alongside vulkan.nouveau.so from the same Mesa build
+# ============================================================================
+#
+# Place the compiled nouveau_dri.so binary in this directory.
+# This is built automatically as part of the Mesa NVK build when
+# gallium-drivers=nouveau is specified.
+#
+# ============================================================================
