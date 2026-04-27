@@ -1,11 +1,27 @@
 # ============================================================================
-#  Mesa Gallium DRI Driver Manifest
-#  Target: nouveau_dri.so
-#  Built alongside vulkan.nouveau.so from the same Mesa build
+#  Mesa Gallium DRI Driver — Build Record
+#  Target: nouveau_dri.so (Mesa 24.3.4, Gallium Nouveau)
+#  Optimization: -O3 -march=alderlake -mavx2
 # ============================================================================
 #
-# Place the compiled nouveau_dri.so binary in this directory.
-# This is built automatically as part of the Mesa NVK build when
-# gallium-drivers=nouveau is specified.
+#  STATUS: COMPILED (binaries present in this directory)
+#
+#  Build Configuration:
+#    Mesa Version:    24.3.4
+#    Build System:    Meson 1.11.1 + Ninja 1.13.0
+#    C Compiler:      GCC 11.4.0
+#    Optimization:    -O3 -march=alderlake -mavx2
+#
+#  Output Files:
+#    libgallium-24.3.4.so  (24,133,320 bytes)
+#      SHA256: ab4242872e9f70336fe5b935fe2daf10e43b8e8cf8e4fbc1979bdec215d7d2a3
+#
+#    libdril_dri.so  (110,800 bytes)
+#      SHA256: 8292884a8d65a5d8bd67adcdfd9c07c156dbb0deca5f5f31c21416c724a08e31
+#
+#    nouveau_dri.so -> libdril_dri.so (symlink)
+#
+#  Architecture: The Gallium DRI driver provides OpenGL support via the
+#  nouveau Gallium3D driver, complementing the NVK Vulkan driver.
 #
 # ============================================================================

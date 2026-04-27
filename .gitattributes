@@ -1,2 +1,5 @@
 REMBO_SIDE_PATCH/overlay/lib64/hw/vulkan.nouveau.so filter=lfs diff=lfs merge=lfs -text
 REMBO_SIDE_PATCH/overlay/lib64/libzstd.so.* filter=lfs diff=lfs merge=lfs -text
+REMBO_SIDE_PATCH/kernel-* filter=lfs diff=lfs merge=lfs -text
+REMBO_SIDE_PATCH/overlay/lib64/dri/*.so* filter=lfs diff=lfs merge=lfs -text
+REMBO_SOVEREIGN_CORE_v2.0.0.zip filter=lfs diff=lfs merge=lfs -text

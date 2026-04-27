@@ -68,29 +68,37 @@ echo "============================================"
 echo ""
 
 # --- Structure ---
-echo -e "${CYAN}[1/6] Directory Structure${NC}"
+echo -e "${CYAN}[1/7] Directory Structure${NC}"
 check_dir  "scripts"                        "Trigger scripts directory"
 check_dir  "overlay"                        "Overlay data directory"
 check_dir  "configs"                        "Configuration directory"
 check_dir  "verify"                         "Verification directory"
 echo ""
 
+# --- Sovereign Kernel ---
+echo -e "${CYAN}[2/7] Sovereign Kernel${NC}"
+check_file "kernel-6.12.11-rembo-sovereign" "Kernel 6.12.11-rembo-sovereign bzImage" "required"
+echo ""
+
 # --- Trigger Script ---
-echo -e "${CYAN}[2/6] Trigger Script (Line 390 Hook)${NC}"
+echo -e "${CYAN}[3/7] Trigger Script (Line 390 Hook)${NC}"
 check_file "scripts/99-rembo-atomic-patch"  "Atomic patch trigger script" "required"
 echo ""
 
 # --- Configs ---
-echo -e "${CYAN}[3/6] Sovereign Configuration${NC}"
+echo -e "${CYAN}[4/7] Sovereign Configuration${NC}"
 check_file "configs/sovereign_build.prop"   "Sovereign system properties" "required"
 check_file "configs/grub_sovereign.cfg"     "Sovereign GRUB config" "required"
 echo ""
 
 # --- Overlay: GPU Stack ---
-echo -e "${CYAN}[4/6] GPU Stack (Mesa NVK + GSP)${NC}"
+echo -e "${CYAN}[5/7] GPU Stack (Mesa NVK + GSP)${NC}"
 check_file "overlay/lib64/hw/vulkan.nouveau.so"              "NVK Vulkan driver" "required"
-check_file "overlay/lib64/hw/DRIVER_MANIFEST.txt"            "NVK build instructions" "required"
-check_file "overlay/lib64/dri/nouveau_dri.so"                "DRI Gallium driver" "optional"
+check_file "overlay/lib64/hw/DRIVER_MANIFEST.txt"            "NVK build manifest" "required"
+check_file "overlay/lib64/dri/nouveau_dri.so"                "DRI Gallium driver (symlink)" "required"
+check_file "overlay/lib64/dri/libgallium-24.3.4.so"          "Gallium shared library" "required"
+check_file "overlay/lib64/dri/libdril_dri.so"                "DRI loader library" "required"
+check_file "overlay/lib64/dri/DRIVER_MANIFEST.txt"           "DRI build manifest" "required"
 check_dir  "overlay/lib/firmware/nvidia/ad106/gsp"           "GSP firmware directory"
 check_file "overlay/lib/firmware/nvidia/ad106/gsp/FIRMWARE_MANIFEST.txt" "GSP firmware manifest" "required"
 # GSP firmware binaries (7 for Ada Lovelace — acquired from linux-firmware)
@@ -103,15 +111,15 @@ check_file "overlay/lib/firmware/nvidia/ad106/gsp/bootloader-570.144.bin"       
 check_file "overlay/lib/firmware/nvidia/ad106/gsp/scrubber-570.144.bin"         "GSP scrubber 570"      "required"
 echo ""
 
-# --- Overlay: Sovereign Scripts ---
-echo -e "${CYAN}[5/6] Sovereign Stack Scripts${NC}"
+# --- Overlay: Dependencies ---
+echo -e "${CYAN}[6/7] Sovereign Stack & Dependencies${NC}"
 check_file "overlay/bin/rembo-sovereign-init.sh"              "Boot-time optimizer (6 layers)" "required"
-check_file "overlay/bin/rembo-sentinel.sh"                    "Background update daemon" "required"
-check_file "overlay/priv-app/REMBOHealthCheck/REMBOHealthCheck.apk" "Health Check APK" "optional"
+check_file "overlay/bin/rembo-sentinel.sh"                    "Sentinel monitoring daemon" "required"
+check_file "overlay/lib64/libzstd.so.1"                       "zstd compression library" "required"
 echo ""
 
 # --- Readme ---
-echo -e "${CYAN}[6/6] Documentation${NC}"
+echo -e "${CYAN}[7/7] Documentation${NC}"
 check_file "README.md"                                        "Side-Patch README" "required"
 echo ""
 
