@@ -197,9 +197,9 @@ apply_stealth_layer() {
         done
     fi
 
-    # Hide x86 emulation markers
-    setprop "ro.dalvik.vm.native.bridge" "0" 2>/dev/null
-    setprop "persist.sys.nativebridge" "0" 2>/dev/null
+    # Note: ro.dalvik.vm.native.bridge is set by apply_translation_layer()
+    # and sovereign_build.prop — do not override it here to avoid
+    # conflicting with ARM translation (ro.* props are read-only once set).
 
     log "Stealth layer applied"
 }

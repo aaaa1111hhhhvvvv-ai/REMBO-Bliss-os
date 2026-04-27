@@ -3,7 +3,7 @@ d8ad2a3331e4272ad0d10b393cd23aa4defa98db7346a3396017451e24d27e0f  /home/ubuntu/r
 6739b24432b961cb287543d8642372ce495b7223ed12e818613e3777c6a79d0d  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/configs/sovereign_build.prop
 f68ac468c65d06214c5c46bf20bec7603a814f203ffd985c7068f3be483fbaba  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/kernel-6.12.11-rembo-sovereign
 b7c1d11a137ebe03f0d6b21e9bb3772afd3c3b450cea2b60dc9d760abe165171  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/bin/rembo-sentinel.sh
-63f02c048b6f29928af83d657cc32ac9025f0fbd17714554c4c9bf65a1bc7fc4  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/bin/rembo-sovereign-init.sh
+ae71814ae1b4ba3cb50020c4073fab3689d1a874aae29da61df9e740f8abdd14  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/bin/rembo-sovereign-init.sh
 b97c592c9fd5b4e867f0a324cf8ddd9a9cefa33b3a543b1c75b4789d2cdcb177  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/lib/firmware/nvidia/ad106/gsp/FIRMWARE_MANIFEST.txt
 7d4ef3258da016f5208cfb1b348a9a1d69aaa13c2f8d4ee8c05d66bd05b45cd6  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/lib/firmware/nvidia/ad106/gsp/booter_load-535.113.01.bin
 8b293e19b637c5e22c87a2428d1c71bb13e0904e8a88ac6b3c6c1f2679c6e37a  /home/ubuntu/repos/REMBO-Bliss-os/REMBO_SIDE_PATCH/overlay/lib/firmware/nvidia/ad106/gsp/booter_load-570.144.bin
