@@ -1,0 +1,40 @@
+# ============================================================================
+#  Mesa NVK Vulkan Driver — Build Record
+#  Target: vulkan.nouveau.so (Mesa 24.3.4, NVK)
+#  Optimization: -O3 -march=alderlake -mavx2
+# ============================================================================
+#
+#  STATUS: COMPILED (binary present in this directory)
+#
+#  Build Configuration:
+#    Mesa Version:    24.3.4
+#    Build System:    Meson 1.11.1 + Ninja 1.13.0
+#    C Compiler:      GCC 11.4.0
+#    C++ Compiler:    G++ 11.4.0
+#    Rust Compiler:   rustc 1.95.0
+#    Bindgen:         0.72.1
+#    LLVM:            15.0.7
+#    SPIRV-Tools:     2022.2.0
+#
+#  Meson Options:
+#    -Dvulkan-drivers=nouveau
+#    -Dgallium-drivers=nouveau
+#    -Dglx=disabled
+#    -Degl=disabled
+#    -Dplatforms=x11
+#    -Dbuildtype=release
+#    -Db_ndebug=true
+#    -Dc_args="-O3 -march=alderlake -mavx2"
+#    -Dcpp_args="-O3 -march=alderlake -mavx2"
+#
+#  Output:
+#    File:    vulkan.nouveau.so
+#    Size:    23,895,696 bytes
+#    AVX2:    25,827 instructions
+#    SHA256:  7956836c93444b07789f06e30351ceb2508a25f7dd658a45d0605df9879e4609
+#
+#  NOTE: This is a Linux-native build. For full Android-x86 ABI compatibility,
+#  rebuild using the AOSP build system or Android NDK cross-compilation
+#  toolchain with -target x86_64-linux-android33.
+#
+# ============================================================================

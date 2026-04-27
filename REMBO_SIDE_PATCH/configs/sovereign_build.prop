@@ -1,0 +1,64 @@
+# ============================================================================
+#  REMBO-Bliss-os Sovereign Edition — System Properties
+#  Lead Architect: FERAS-AL-ABBADI
+# ============================================================================
+
+# === GPU: NVK Vulkan + GSP Firmware ===
+ro.hardware.vulkan=nouveau
+ro.hardware.egl=mesa
+ro.hardware.gralloc=minigbm
+debug.hwui.renderer=vulkan
+debug.egl.hw=1
+ro.nouveau.gsp.enabled=1
+persist.sys.gpu.working=1
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+ro.hwui.texture_cache_size=2048
+
+# === Display: 180Hz Forced ===
+persist.sys.sf.display_refresh_rate=180
+persist.sys.sf.color_mode=9
+ro.surface_flinger.use_color_management=true
+
+# === Input: 8000Hz Polling ===
+persist.sys.input.polling_rate=8000
+persist.sys.input.fiq_enabled=1
+
+# === Networking: BBR + Low Latency ===
+persist.sys.net.tcp_congestion=bbr
+persist.sys.net.tcp_nodelay=1
+persist.sys.net.tcp_fastopen=1
+
+# === Performance: REMBO Governor ===
+persist.sys.perf.governor=performance
+persist.sys.perf.turbo_lock=1
+persist.sys.perf.cstate_disable=1
+
+# === Stealth: KVM Masking ===
+ro.kernel.qemu=0
+ro.hardware.virtual_device=0
+ro.boot.container=0
+ro.product.model=REMBO-Gaming-PC
+ro.product.manufacturer=REMBO-Systems
+ro.product.brand=REMBO
+ro.product.device=rembo_x86_64
+ro.product.name=REMBO-Bliss-os
+ro.build.display.id=REMBO-Sovereign-1.0
+ro.build.fingerprint=REMBO/rembo_x86_64/rembo_x86_64:13/TQ3A.230901.001/1:userdebug/release-keys
+gsm.version.baseband=REMBO-1.0
+
+# === Translation Layer ===
+ro.dalvik.vm.native.bridge=libndk_translation.so
+ro.enable.native.bridge.exec=1
+dalvik.vm.usejit=true
+dalvik.vm.jit.codecachesize=512
+dalvik.vm.dex2oat-threads=6
+dalvik.vm.image-dex2oat-threads=6
+
+# === SELinux Permissive ===
+ro.boot.selinux=permissive
+
+# === Sentinel Auto-Update ===
+persist.sys.rembo.sentinel=enabled
+persist.sys.rembo.sentinel.interval=86400
+persist.sys.rembo.version=1.0.0
+persist.sys.rembo.architect=FERAS-AL-ABBADI

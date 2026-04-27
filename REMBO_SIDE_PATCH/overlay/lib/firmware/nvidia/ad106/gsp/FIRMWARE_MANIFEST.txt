@@ -1,0 +1,30 @@
+# ============================================================================
+#  NVIDIA AD106 (RTX 4060 Ti) GSP Firmware Manifest
+#  Required by: nouveau.ko (Linux 6.14.0)
+#  Boot param:  nouveau.config=NvGspRm=1
+#  Source: linux-firmware.git (nvidia/ad102/gsp/ — shared across Ada Lovelace)
+# ============================================================================
+#
+#  AD106 shares GSP firmware with AD102 (same Ada Lovelace architecture).
+#  All 7 binaries have been acquired from the upstream linux-firmware repo.
+#
+#  STATUS: ACQUIRED (7/7 binaries present and verified)
+#
+#  Filename                            Size (bytes)   SHA256 (first 16 chars)
+#  ──────────────────────────────────────────────────────────────────────────
+#  booter_load-535.113.01.bin          55,928         7d4ef3258da016f5
+#  booter_load-570.144.bin             57,720         8b293e19b637c5e2
+#  booter_unload-535.113.01.bin        39,800         d036dfee0545c36e
+#  booter_unload-570.144.bin           41,592         975b85a14ded8e43
+#  bootloader-535.113.01.bin           32,876         044d3a21eff73eb1
+#  bootloader-570.144.bin              36,972         65ab2e6b6e0fca95
+#  scrubber-570.144.bin                 8,312         c397358e5c4258da
+#  ──────────────────────────────────────────────────────────────────────────
+#  TOTAL: 7 binaries (273,200 bytes)
+#
+#  NOTE: The gsp-535.113.01.bin file referenced in older manifests is specific
+#  to Turing/Ampere (tu102, ga102) architectures. For Ada Lovelace (AD10x),
+#  the GSP payload is integrated into the bootloader binary. The 7 files
+#  above are the complete set required by nouveau.ko for AD106.
+#
+# ============================================================================
